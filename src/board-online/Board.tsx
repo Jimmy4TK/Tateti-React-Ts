@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Square from './Square';
 import './Board.css'
-import GlobalContent from "../../common/components/GlobalContent";        
+import GlobalContent from "../common/components/GlobalContent";
 import { Container } from 'react-bootstrap';
 
 export default function BoardOnline() {
+
     function renderSquare(i:number) {
         return <Square value={i} />;
     }

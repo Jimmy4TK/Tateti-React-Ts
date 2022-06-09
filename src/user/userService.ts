@@ -6,6 +6,13 @@ import { cleanupSessionUser, updateSessionUser } from "../store/userStore"
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 axios.defaults.headers.common["Content-Type"] = "application/json"
 
+export interface User {
+  id: number
+  email: string
+  name: string
+  state: string
+}
+
 export interface Token {
   token: string
 }
@@ -55,13 +62,6 @@ export async function logout(): Promise<void> {
     cleanupSessionToken()
     cleanupSessionUser()
   }
-}
-
-export interface User {
-  id: number
-  email: string
-  name: string
-  state: string
 }
 
 export async function reloadCurrentUser(params:{token: string}): Promise<User> {

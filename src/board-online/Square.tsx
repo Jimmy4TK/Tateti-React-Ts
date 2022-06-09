@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useState, useEffect } from 'react';
-import WinScreen from '../Winscreen';
+import WinScreen from '../game/Winscreen';
 import './Board.css'
-import GlobalContent from "../../common/components/GlobalContent";
+import GlobalContent from "../common/components/GlobalContent";
         
 let team:boolean =true;
 let w = new Array(8);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Square from './Square';
 import './Board.css'
 import GlobalContent from "../../common/components/GlobalContent";        

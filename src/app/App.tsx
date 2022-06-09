@@ -3,6 +3,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Welcome from "../welcome/Welcome";
 import ButtonNewGame from '../game/Button';
 import LoginMenu from '../menu/LoginMenu';
+import OnlineMenu from '../board-online/OnlineMenu';
 import { StateLoggedInRoute } from '../common/components/LoggedInRoute';
 import Info from '../info/Info'
 import Password from '../user/Password';
@@ -21,6 +22,7 @@ export default function App() {
                 <Route path="/register" element={<LoginMenu />} />
                 <Route path="/info" element={<StateLoggedInRoute component={Info} />} />
                 <Route path="/password" element={<StateLoggedInRoute component={Password} />} />
+                <Route path="/online" element={<OnlineMenu />} />
               </Routes>
       <Outlet />
     </BrowserRouter >
