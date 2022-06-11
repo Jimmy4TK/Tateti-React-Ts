@@ -1,13 +1,12 @@
 import axios, { AxiosError } from "axios"
 import { http } from "../common/http"
-import { List } from './ListGames'
+import { updateSessionGames } from "../store/gamesStore"
 
 axios.defaults.headers.common["Content-Type"] = "application/json"
 
 export interface Game {
   id: number
-  pos: Array<string> 
-  team: boolean
+  player: string
 }
 export interface Games {
   games: Array<Game>
@@ -41,17 +40,18 @@ export async function getStateGame(){
   return res
 }
 
-export async function ListIncomplete():Promise<Games>{
+export async function ListIncomplete(){
   const res = (
       await axios.get(http.backendUrl + "/games/incomplete")
     ).data as Games
-    List(res)
+  localStorage.setItem("games", JSON.stringify(res))
+  updateSessionGames(res)
   return res
 }
 
-export async function AssignPlayer(){
+export async function AssignPlayer(id:number){
   const res = (
-    await axios.put(http.backendUrl + "/games/assign_player")
+    await axios.post(http.backendUrl + "/games/assignplayer/"+ id)
   )
   return res
 }

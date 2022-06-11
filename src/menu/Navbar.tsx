@@ -1,6 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import { Button, Container , Navbar , Nav , NavDropdown } from 'react-bootstrap';
+import { Button , Navbar , Nav , NavDropdown } from 'react-bootstrap';
 import { PersonCircle } from 'react-bootstrap-icons';
 import "./Navbar.css"
 import { useSessionUser } from "../store/userStore"
@@ -22,14 +22,12 @@ export default function NavBarMenu() {
   : <NavLink to="/login"><Button className="btn btn-secondary mb-2 mx-2 position-absolute end-0">Login</Button></NavLink>
   return (
     <Navbar className="position-relative" bg="dark" variant="dark">
-      <Navbar.Brand className="ms-4">Tateti</Navbar.Brand>
-        <Container>
-        <Nav className="me-auto">
+      <Navbar.Brand className="ms-2 me-5">Tateti</Navbar.Brand>
+        <Nav className="me-auto ms-0">
           <NavLink className="navlink" to="/">Welcome</NavLink>&nbsp;&nbsp;
           <NavLink className="navlink" to="/game">Game</NavLink>&nbsp;&nbsp;
           {menu}&nbsp;&nbsp;
         </Nav>
-      </Container>
   </Navbar>
   )
 }
