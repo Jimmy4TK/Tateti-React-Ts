@@ -3,13 +3,15 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Welcome from "../welcome/Welcome";
 import ButtonNewGame from '../game/Button';
 import LoginMenu from '../menu/LoginMenu';
-import OnlineMenu from '../board-online/OnlineMenu';
+import OnlineMenu from '../menu-online/OnlineMenu';
+import Queue from '../menu-online/Queue';
 import { StateLoggedInRoute } from '../common/components/LoggedInRoute';
 import Info from '../info/Info'
 import Password from '../user/Password';
 import NavBarMenu from "../menu/Navbar";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BoardOnline from '../board-online/Board';
 
 export default function App() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
                 <Route path="/info" element={<StateLoggedInRoute component={Info} />} />
                 <Route path="/password" element={<StateLoggedInRoute component={Password} />} />
                 <Route path="/online" element={<OnlineMenu />} />
+                <Route path="/queue" element={<Queue />} />
+                <Route path="/gameonline" element={<BoardOnline />} />
               </Routes>
       <Outlet />
     </BrowserRouter >

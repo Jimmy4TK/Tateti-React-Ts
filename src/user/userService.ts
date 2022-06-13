@@ -100,7 +100,6 @@ export async function newUser(params: {
     const axiosError = err as AxiosError
     throw err
   }
-  
 }
 
 export async function changePassword(params: {
