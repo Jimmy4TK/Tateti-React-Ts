@@ -40,10 +40,12 @@ export async function Game(id:number):Promise<Game>{
   return res
 }
 
-export async function update(id:number,params:{game:{pos: string}}){
+export async function Update(id:number,params:{game:{pos:string},position:number}):Promise<Game>{
   const res = (
       await axios.put(http.backendUrl + "/games/"+id,params)
-  )
+  ).data as Game
+  localStorage.setItem("game", JSON.stringify(res))
+  updateSessionGame(res)
   return res
 }
 

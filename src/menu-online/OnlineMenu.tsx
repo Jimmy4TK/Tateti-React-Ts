@@ -6,9 +6,8 @@ import { Button } from 'react-bootstrap';
 import { useSessionToken } from "../store/tokenStore"
 import { cleanupSessionGames, useSessionGames } from '../store/gamesStore';
 import { useErrorHandler } from "../common/utils/ErrorHandler"
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DangerLabel from '../common/components/DangerLabel';
-import { cleanupSessionGame } from '../store/gameStore';
 
 export default function OnlineMenu(){
     const token = useSessionToken()
@@ -19,7 +18,6 @@ export default function OnlineMenu(){
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        cleanupSessionGame
         if(token==undefined){
             history('/game')
         }
@@ -39,8 +37,9 @@ export default function OnlineMenu(){
         cleanupSessionGames(),
     [] );
 
-    function Game(){
-        CreateGame({ token: token })
+    async function Game(){
+        await CreateGame({ token: token })
+        history('/queue')
     }
 
     function renderListGames(value:number,player:string){
@@ -50,7 +49,7 @@ export default function OnlineMenu(){
     return (
         <GlobalContent>
             <div className="d-flex flex-row">
-                <div><NavLink className="btn overflow-auto" to="/queue"><Button className="btn btn-dark" onClick={Game}>Create New Online Game</Button></NavLink></div>
+                <div><Button className="ms-2 mt-2 btn btn-dark" onClick={Game}>Create New Online Game</Button></div>
                 <div className='ms-5 flex-column col-8'>
                 {games==undefined ? '' : games.games.map((game)=>(renderListGames(game.id,game.player1)))}
                 <div className='mt-5 col-5 mx-auto'><DangerLabel message={errorHandler.errorMessage} /></div>

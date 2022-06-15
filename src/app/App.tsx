@@ -12,6 +12,7 @@ import NavBarMenu from "../menu/Navbar";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BoardOnline from '../board-online/Board';
+import WinScreen from '../board-online/Winscreen';
 
 export default function App() {
   return (

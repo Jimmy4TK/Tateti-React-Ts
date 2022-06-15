@@ -14,25 +14,30 @@ export default function Queue(props:any){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    useEffect(() => {
-        if(game?.state=='ingame'){
-            setTimeout(()=>history('/gameonline'),3000)
-        }
+    useEffect(() => {        
         if(count!=0){
-            setTimeout(async ()=>{
-                if(game==undefined){
-                    handleShow()
-                }else{
-                    if(game.state=='waitingplayer'){
-                        game= await Game(game.id);
-                        setCount(count+1)
-                    } else if(game.state=='ingame'){
-                        setCount(0)
-                    }
-                }
-            },3000)
+            setTimeout(actionHandler,3000)
         }
     });
+
+    function actionHandler(){
+        if(game==undefined){
+            handleShow()
+            setCount(0)
+        }else{
+            if(game.state=='waitingplayer'){
+                updatingGame()
+                setCount(count+1)
+            } else if(game.state=='ingame'){
+                history('/gameonline')
+                setCount(0)
+            }
+        }
+    }
+    
+    async function updatingGame(){
+        game= await Game(game!.id);
+    }
 
     function switchState(){
         switch (game?.state) {
@@ -43,6 +48,11 @@ export default function Queue(props:any){
             default:
                 break;
         }
+    }
+
+    function comeBack(){
+        handleClose()
+        history('/online')   
     }
 
     const state=switchState();
@@ -76,7 +86,7 @@ export default function Queue(props:any){
                 </Modal.Header>
                 <Modal.Body>Game not found, redirecting to online games</Modal.Body>
                 <Modal.Footer>
-                <Button variant="secondary" onClick={()=>history('/online')}>
+                <Button variant="secondary" onClick={comeBack}>
                     Close
                 </Button>
                 </Modal.Footer>
