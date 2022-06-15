@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import GlobalContent from "../common/components/GlobalContent"; 
 import ListGames from './ListGames';
-import { CreateGame, ListIncomplete } from "./boardService"          
+import { CreateGame, ListIncomplete } from "./gameService"          
 import { Button } from 'react-bootstrap';
 import { useSessionToken } from "../store/tokenStore"
 import { cleanupSessionGames, useSessionGames } from '../store/gamesStore';

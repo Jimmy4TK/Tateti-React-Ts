@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GlobalContent from "../common/components/GlobalContent";
 import { Button, Container, Modal } from 'react-bootstrap';
 import { useSessionUser } from '../store/userStore';
-import { Game } from '../menu-online/boardService';
+import { Game } from '../menu-online/gameService';
 import { useSessionGame } from '../store/gameStore';
 import { useNavigate } from 'react-router-dom';
 import Square from './Square';

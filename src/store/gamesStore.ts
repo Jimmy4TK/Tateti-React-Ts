@@ -1,5 +1,5 @@
 import { Subject } from "rxjs"
-import { Games } from "../menu-online/boardService"
+import { Games } from "../menu-online/gameService"
 import { useState, useLayoutEffect } from "react"
 
 let currentGames: Games | undefined

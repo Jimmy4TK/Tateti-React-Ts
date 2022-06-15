@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import './Winscreen.css'
 import GlobalContent from "../common/components/GlobalContent";
 import { useNavigate } from 'react-router-dom';
-
+import './Winscreen.css'
 
 export default function WinScreen(props:any){
     let value:string;
@@ -15,7 +14,7 @@ export default function WinScreen(props:any){
 
     return(
     <GlobalContent>
-            {props.value=='winred' ? <div className="background"><div className="winscreen">Red Team Won</div></div> : props.value ? <div className="background"><div className="winscreen">Green Team Won</div></div> : <div className="background"><div className="winscreen">Tie</div></div>}
+            {props.value=='winred' ? <div className="background"><div className="winscreen">Red Team Won</div></div> : props.value=='wingreen' ? <div className="background"><div className="winscreen">Green Team Won</div></div> : <div className="background"><div className="winscreen">Draw</div></div>}
     </GlobalContent>
     )
 }

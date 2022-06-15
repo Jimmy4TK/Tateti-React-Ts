@@ -1,18 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Welcome from "../welcome/Welcome";
-import ButtonNewGame from '../game/Button';
 import LoginMenu from '../menu/LoginMenu';
-import OnlineMenu from '../menu-online/OnlineMenu';
-import Queue from '../menu-online/Queue';
-import { StateLoggedInRoute } from '../common/components/LoggedInRoute';
+import NavBarMenu from "../menu/Navbar";
 import Info from '../info/Info'
 import Password from '../user/Password';
-import NavBarMenu from "../menu/Navbar";
+import ButtonNewGame from '../game/Button';
+import OnlineMenu from '../menu-online/OnlineMenu';
+import Queue from '../menu-online/Queue';
+import BoardOnline from '../board-online/Board';
+import { StateLoggedInRoute } from '../common/components/LoggedInRoute';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BoardOnline from '../board-online/Board';
-import WinScreen from '../board-online/Winscreen';
 
 export default function App() {
   return (

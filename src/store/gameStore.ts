@@ -1,5 +1,5 @@
 import { Subject } from "rxjs"
-import { Game } from "../menu-online/boardService"
+import { Game } from "../menu-online/gameService"
 import { useState, useLayoutEffect } from "react"
 
 let currentGame: Game | undefined
@@ -31,10 +31,4 @@ export function cleanupSessionGame() {
 if (currentGame !== undefined) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   updateSessionGame(currentGame)
-}
-
-export function searchPlayer(){
-  if(currentGame?.state=='waitingplayer'){
-    
-  }
 }

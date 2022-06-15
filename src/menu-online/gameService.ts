@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios"
 import { http } from "../common/http"
 import { updateSessionGames } from "../store/gamesStore"
-import { updateSessionGame, useSessionGame } from "../store/gameStore"
+import { updateSessionGame } from "../store/gameStore"
 
 axios.defaults.headers.common["Content-Type"] = "application/json"
 

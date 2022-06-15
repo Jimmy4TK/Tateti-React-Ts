@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Container, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useSessionToken } from '../store/tokenStore';
-import { AssignPlayer } from './boardService';
+import { AssignPlayer } from './gameService';
 import "./ListGames.css"
 
 export default function ListGames(props:any){

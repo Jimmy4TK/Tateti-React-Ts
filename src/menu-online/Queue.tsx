@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Button, Container, Modal, Table } from 'react-bootstrap';
 import GlobalContent from '../common/components/GlobalContent';
 import { useSessionGame } from '../store/gameStore';
-import { Game } from './boardService';
+import { Game } from './gameService';
 
 export default function Queue(props:any){
     const[count,setCount] = useState(1);

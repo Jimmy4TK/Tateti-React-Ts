@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GlobalContent from "../common/components/GlobalContent";
-import { Game, Update } from '../menu-online/boardService';
+import { Update } from '../menu-online/gameService';
 import { useSessionGame } from '../store/gameStore';
 import './Winscreen.css'
 import './Board.css'

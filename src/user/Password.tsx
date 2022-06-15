@@ -19,7 +19,7 @@ export default function Password() {
     const [currentPassword, setCurrentPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [newPassword2, setNewPassword2] = useState("")
-    const[token, setToken] = useState(useSessionToken())
+    const token = useSessionToken()
 
     const errorHandler = useErrorHandler()
 
