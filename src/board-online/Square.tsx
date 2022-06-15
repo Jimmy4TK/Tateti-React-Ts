@@ -19,7 +19,7 @@ export default function Square(props: any) {
 
     function Action(){
         props.team ? setBackground("red") : setBackground("green")
-        Update(game!.id,{game:{pos: posarray.join(',')},position:props.value})
+        Update(game!.id,{pos:props.value})
     }
 
     function Turn(){
