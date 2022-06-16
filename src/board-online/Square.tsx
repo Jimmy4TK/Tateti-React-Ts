@@ -7,9 +7,10 @@ import './Board.css'
 
 export default function Square(props: any) {
     let value:number;
-    let team:boolean;
+    let turn:boolean;
     let game=useSessionGame();
-    let posarray = game!.pos.split(',')
+    let board1 = game!.board1.split('')
+    let board2 = game!.board2.split('')
 
     const [background, setBackground] = useState("white");
 
@@ -18,26 +19,27 @@ export default function Square(props: any) {
     });
 
     function Action(){
-        props.team ? setBackground("red") : setBackground("green")
         Update(game!.id,{pos:props.value})
     }
 
     function Turn(){
-        if(posarray[props.value]=='0'){
-            console.log(props.team)
-            console.log(game?.team)
-            if(props.team==game?.team && game?.state=='ingame'){
-                return true
-            } else{
-                return false
+        if(props.turn==game?.turn){
+            if(!board1.includes(props.value.toString())){
+                if(!board2.includes(props.value.toString())){
+                    return true
+                } else{
+                    return false
+                }
             }
+        } else {
+            return false
         }
     }
 
     function checkPos(){
-        if(posarray[props.value]=='1'){
+        if(board1.includes(props.value.toString())){
             setBackground("red")
-        } else if(posarray[props.value]=='2') {
+        } else if(board2.includes(props.value.toString())) {
             setBackground('green')
         }
     }

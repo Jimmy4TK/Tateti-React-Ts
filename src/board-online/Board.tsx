@@ -12,7 +12,7 @@ import WinScreen from './Winscreen';
 export default function BoardOnline() {
     let game=useSessionGame()
     let user=useSessionUser()
-    let team:boolean
+    let turn:boolean
     const history = useNavigate()
 
     const [show, setShow] = useState(false);
@@ -20,16 +20,16 @@ export default function BoardOnline() {
     const handleShow = () => setShow(true);
 
     if(user!.name==game?.player1){
-        team= true;
+        turn= true;
     } else if(user!.name==game?.player2){
-        team= false;
+        turn= false;
     }
 
     const[count,setCount] = useState(1);
     
 
     function renderSquare(i:number) {
-        return <Square value={i} team={team} game={game} />;
+        return <Square value={i} turn={turn} game={game} />;
     }
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function BoardOnline() {
         }
         if(count!=0){
             setTimeout(async ()=>{
-                if(team!=game?.team){
+                if(turn!=game?.turn){
                     if(game?.state=='ingame'){
                         game= await Game(game!.id);
                         setCount(count+1)

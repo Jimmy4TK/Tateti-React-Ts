@@ -23,10 +23,6 @@ export default function StateInfo() {
                     <input className="form-control" id="name" value={user!.name} disabled />
                 </div>
                 <div className="form-group">
-                    <label>Estado</label>
-                    <input className="form-control" id="name" value={user!.state} disabled />
-                </div>
-                <div className="form-group">
                     <label>Token</label>
                     <input className="form-control" id="name" value={token} disabled />
                 </div>

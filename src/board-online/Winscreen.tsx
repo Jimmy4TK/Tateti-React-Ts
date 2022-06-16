@@ -14,7 +14,7 @@ export default function WinScreen(props:any){
 
     return(
     <GlobalContent>
-            {props.value=='winred' ? <div className="background"><div className="winscreen">Red Team Won</div></div> : props.value=='wingreen' ? <div className="background"><div className="winscreen">Green Team Won</div></div> : <div className="background"><div className="winscreen">Draw</div></div>}
+            {props.value=='winplayer1' ? <div className="background"><div className="winscreen">Red Team Won</div></div> : props.value=='winplayer2' ? <div className="background"><div className="winscreen">Green Team Won</div></div> : <div className="background"><div className="winscreen">Draw</div></div>}
     </GlobalContent>
     )
 }

@@ -10,7 +10,6 @@ export interface User {
   id: number
   email: string
   name: string
-  state: string
 }
 
 export interface Token {
@@ -40,7 +39,7 @@ function getCurrentToken(): string | undefined {
 function setCurrentToken(token: string) {
   localStorage.setItem("token", token)
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  axios.defaults.headers.common.Authorization = "bearer " + token
+  axios.defaults.headers.common.Authorization = "Bearer " + token
 }
 
 function getCurrentUser(): User | undefined {
@@ -103,13 +102,13 @@ export async function newUser(params: {
 }
 
 export async function changePassword(params: {
-  token: string | undefined
+  id: number
   currentPassword: string
   newPassword: string
   newPassword2: string
 }): Promise<void> {
   try {
-    await axios.post(http.backendUrl + "/users/changepassword", params)
+    await axios.post(http.backendUrl + "/users/"+params.id+"/changepassword", params)
     return
   } catch (err) {
     const axiosError = err as AxiosError
@@ -126,7 +125,7 @@ if (getCurrentToken()) {
   const currentToken = getCurrentToken()
   if (currentUser !== undefined && currentToken !== undefined) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    axios.defaults.headers.common.Authorization = "bearer " + currentToken
+    axios.defaults.headers.common.Authorization = "Bearer " + currentToken
     updateSessionToken(currentToken)
     updateSessionUser(currentUser)
     void reloadCurrentUser({token: currentToken}).then()

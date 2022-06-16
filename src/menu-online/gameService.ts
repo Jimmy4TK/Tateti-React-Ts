@@ -10,8 +10,9 @@ export interface Game {
   player1: string
   player2: string
   state: string
-  pos: string
-  team: boolean
+  board1: string
+  board2: string
+  turn: boolean
 }
 export interface Games {
   games: Array<Game>
@@ -33,7 +34,7 @@ export async function CreateGame(params:{token: string | undefined}):Promise<Gam
 
 export async function Game(id:number):Promise<Game>{
   const res = (
-      await axios.get(http.backendUrl + "/games/checkplayer/"+id)
+      await axios.get(http.backendUrl + "/games/"+ id+"/checkplayer")
   ).data as Game
   localStorage.setItem("game", JSON.stringify(res))
   updateSessionGame(res)
@@ -42,7 +43,7 @@ export async function Game(id:number):Promise<Game>{
 
 export async function Update(id:number,params:{pos:number}):Promise<Game>{
   const res = (
-      await axios.post(http.backendUrl + "/games/game/"+id,params)
+      await axios.post(http.backendUrl + "/games/"+ id+"/move",params)
   ).data as Game
   localStorage.setItem("game", JSON.stringify(res))
   updateSessionGame(res)
@@ -66,7 +67,7 @@ export async function ListIncomplete(){
 export async function AssignPlayer(id:number,params:{token: string | undefined}):Promise<Game>{
   try{
     const res = (
-      await axios.post(http.backendUrl + "/games/assignplayer/"+ id,params)
+      await axios.post(http.backendUrl + "/games/"+ id+"/assignplayer",params)
     ).data as Game
     localStorage.setItem("game", JSON.stringify(res))
     updateSessionGame(res)

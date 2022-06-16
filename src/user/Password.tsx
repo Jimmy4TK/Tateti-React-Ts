@@ -10,8 +10,8 @@ import FormPassword from "../common/components/FormPassword"
 import FormTitle from "../common/components/FormTitle"
 import GlobalContent from "../common/components/GlobalContent"
 import { useErrorHandler } from "../common/utils/ErrorHandler"
-import { changePassword } from "./userService"
-import { useSessionToken } from "../store/tokenStore"
+import { changePassword, User } from "./userService"
+import { useSessionUser } from "../store/userStore"
 
 
 export default function Password() {
@@ -19,7 +19,7 @@ export default function Password() {
     const [currentPassword, setCurrentPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [newPassword2, setNewPassword2] = useState("")
-    const token = useSessionToken()
+    const user:User|undefined = useSessionUser()
 
     const errorHandler = useErrorHandler()
 
@@ -45,7 +45,7 @@ export default function Password() {
                 currentPassword,
                 newPassword,
                 newPassword2,
-                token
+                id: user!.id
             })
             history("/")
         } catch (error) {
